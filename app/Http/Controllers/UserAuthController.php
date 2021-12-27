@@ -12,12 +12,12 @@ class UserAuthController extends Controller
     public function __construct() {
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
-
+    public $loginAfterSignUp = true;
     public function register(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:2,100',
             'email' => 'required|string|email|max:100|unique:users',
-            'password' => 'required|string|confirmed|min:5',
+            'password' => 'required|string|min:5',
         ]);
 
         if($validator->fails()){
@@ -29,10 +29,18 @@ class UserAuthController extends Controller
             ['password' => bcrypt($request->password)]
         ));
 
+        // $token = $this->createNewToken(JWTAuth::attempt($validator->validated()));
+        // $token = JWTAuth::fromUser($user);
+        if ($this->loginAfterSignUp) {
+            return $this->login($request);
+        }
         return response()->json([
             'message' => 'User registered successfully',
-            'user' => $user
+            'user' => $user,
+            // 'access_token' => $token,
+
         ], 201);
+
     }
 
     public function login(Request $request){
