@@ -38,7 +38,6 @@ class UserAuthController extends Controller
             'message' => 'User registered successfully',
             'user' => $user,
             // 'access_token' => $token,
-
         ], 201);
 
     }
@@ -57,7 +56,12 @@ class UserAuthController extends Controller
             return response()->json(['status' => 'failed', 'message' => 'Invalid email and password.', 'error' => 'Unauthorized'], 401);
         }
 
-        return $this->createNewToken($token);
+        // return $this->createNewToken($token);
+        return response()->json([
+            'token' => $token,
+            'name' => auth()->user()->name,
+            'email' => auth()->user()->email,
+        ], 200);
     }
 
      /**
@@ -70,7 +74,7 @@ class UserAuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 60,
-            'user' => auth()->user()
+            // 'user' => auth()->user()
         ]);
     }
 
