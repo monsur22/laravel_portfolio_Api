@@ -22,6 +22,9 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::post('refresh', [UserAuthController::class, 'refresh']);
     Route::post('logout', [UserAuthController::class, 'logout']);
 });
+Route::group(['middleware' => ['jwt.verify']], function() {
+    Route::get('users', [UserAuthController::class, 'getAuthenticatedUser']);
+});
 Route::get('/demo-url',  function  (Request $request)  {
     return response()->json(['Laravel 8 CORS Demo']);
  });
