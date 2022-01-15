@@ -1,0 +1,26 @@
+laravel:
+docker run -p 8181:8181 laravel-backend
+
+React:
+docker build -t react-app .
+docker run -it react-app
+docker run -it react-app sh
+docker run react-app npm start
+docker image prune
+docker container prune
+docker image rm
+docker rmi imageid
+docker rmi $(docker images -q)
+docker system prune --all
+
+docker run react-app
+docker run -d react-app
+docker run -d --name blue-sky react-app
+docker logs 93d260cacaa9
+
+docker run -d -p 80:3000 --name c1 react-app       //80 host port , c1 given a name, react-app image name
+docker start c1
+docekr -f rm c1
+docker ps -a | grep c1
+
+docker run -d -p 5001:3000 -v $(pwd):/app react-app
