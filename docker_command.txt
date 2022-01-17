@@ -1,6 +1,7 @@
 laravel:
 docker run -p 8181:8181 laravel-backend
-
+docker rm -f $(docker ps -a -q)  //remove all container
+docker system prune   //remove all images
 React:
 docker build -t react-app .
 docker run -it react-app
