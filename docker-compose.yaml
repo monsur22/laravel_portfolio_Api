@@ -7,8 +7,9 @@ services:
     # command: 'php artisan serve --host=0.0.0.0'
     volumes:
       - .:/app
-    # ports:
-    #   - 8000:8000
+    ports:
+      - 8000:8000
+
   webserver:
     image: nginx:alpine
     container_name: webserver
@@ -17,19 +18,9 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    volumes:
+      - ./docker/nginx:/var/lib/nginx
 
-
-  # admin_db:
-  #   image: mysql:5.7.22
-  #   environment:
-  #     MYSQL_DATABASE: admin
-  #     MYSQL_USER: root
-  #     MYSQL_PASSWORD: root
-  #     MYSQL_ROOT_PASSWORD: root
-  #   volumes:
-  #     - ./storage/dbdata:/var/lib/mysql
-  #   ports:
-  #     - 33063:3306
   db:
     image: mysql:5.7.22
     ports:
@@ -45,7 +36,7 @@ services:
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
-      - ./storage/dbdata:/var/lib/mysql
+      - ./docker/dbdata:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin
@@ -54,16 +45,3 @@ services:
       - 7000:80
     environment:
       - PMA_ARBITRARY=1
-  # phpmyadmin:
-  #   image: phpmyadmin/phpmyadmin
-  #   ports:
-  #     - "7000:80"
-  #   links:
-  #     - db:db
-  #   environment:
-  #     MYSQL_USER: root
-  #     MYSQL_PASSWORD: root
-  #     MYSQL_ROOT_PASSWORD: root
-      # MYSQL_ROOT_PASSWORD:
-    # networks:
-    #   - app-network
