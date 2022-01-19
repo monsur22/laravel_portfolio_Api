@@ -60,9 +60,18 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function edit(Home $home)
+    public function edit(Home $home,$id)
     {
-        //
+        $edit = Home::find($id);
+
+        if (!$edit) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, product not found.'
+            ], 400);
+        }
+
+        return $edit;
     }
 
     /**
