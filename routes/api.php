@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\Portfolio\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,8 @@ Route::group(['middleware' => 'api'], function ($router) {
 });
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('users', [UserAuthController::class, 'getAuthenticatedUser']);
+    Route::resource('portfolio/home', HomeController::class);
+
 });
 Route::get('/demo-url',  function  (Request $request)  {
     return response()->json(['Laravel 8 CORS Demo']);
