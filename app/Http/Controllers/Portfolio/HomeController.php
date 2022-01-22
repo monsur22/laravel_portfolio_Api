@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Portfolio;
 use App\Models\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\Response;
 class HomeController extends Controller
 {
     /**
@@ -60,7 +61,7 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function edit(Home $home,$id)
+    public function edit($id)
     {
         $edit = Home::find($id);
 
@@ -81,9 +82,14 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Home $home)
+    public function update(Request $request, $id)
     {
-        //
+        $home=Home::find($id);
+        $home->update($request->all());
+        return response()->json([
+            'message' => 'Update   successfully'
+            // 'access_token' => $token,
+        ], 201);
     }
 
     /**
