@@ -19,6 +19,7 @@ class CreateAboutsTable extends Migration
             $table->string('s_desc')->nullable();
             $table->string('birth')->nullable();
             $table->string('age')->nullable();
+            $table->string('web')->nullable();
             $table->string('degree')->nullable();
             $table->string('email')->nullable();
             $table->string('city')->nullable();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Portfolio;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -35,7 +36,12 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $about = About::create($request->all());
+        return response()->json([
+            'message' => 'about create  successfully',
+            'about' => $about,
+            // 'access_token' => $token,
+        ], 201);
     }
 
     /**
