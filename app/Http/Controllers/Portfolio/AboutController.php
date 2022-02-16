@@ -63,7 +63,16 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit = About::find($id);
+
+        if (!$edit) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, product not found.'
+            ], 400);
+        }
+
+        return $edit;
     }
 
     /**
@@ -75,7 +84,12 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $about=About::find($id);
+        $about->update($request->all());
+        return response()->json([
+            'message' => 'Update   successfully'
+            // 'access_token' => $token,
+        ], 201);
     }
 
     /**
