@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\Portfolio\HomeController;
 use App\Http\Controllers\Portfolio\AboutController;
-
+use App\Http\Controllers\Portfolio\EduController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +29,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('users', [UserAuthController::class, 'getAuthenticatedUser']);
     Route::resource('portfolio/home', HomeController::class);
     Route::resource('portfolio/about', AboutController::class);
+    Route::resource('portfolio/education', EduController::class);
 
 });
 Route::get('/demo-url',  function  (Request $request)  {
