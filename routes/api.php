@@ -6,6 +6,9 @@ use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\Portfolio\HomeController;
 use App\Http\Controllers\Portfolio\AboutController;
 use App\Http\Controllers\Portfolio\EduController;
+use App\Http\Controllers\Portfolio\ExpController;
+use App\Http\Controllers\Portfolio\PortfController;
+use App\Http\Controllers\Portfolio\SkillController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +33,9 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::resource('portfolio/home', HomeController::class);
     Route::resource('portfolio/about', AboutController::class);
     Route::resource('portfolio/education', EduController::class);
+    Route::resource('portfolio/experience', ExpController::class);
+    Route::resource('portfolio/skill', SkillController::class);
+    Route::resource('portfolio/portf', PortfController::class);
 
 });
 Route::get('/demo-url',  function  (Request $request)  {

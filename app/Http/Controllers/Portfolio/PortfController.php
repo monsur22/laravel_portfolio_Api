@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Portfolio;
 
 use App\Http\Controllers\Controller;
-use App\Models\Experience;
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
 
-class ExpController extends Controller
+class PortfController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,10 +36,10 @@ class ExpController extends Controller
      */
     public function store(Request $request)
     {
-        $experience = Experience::create($request->all());
+        $portfolio = Portfolio::create($request->all());
         return response()->json([
-            'message' => 'Experience create  successfully',
-            'experience' => $experience,
+            'message' => 'Portfolio create  successfully',
+            'Portfolio' => $portfolio,
             // 'access_token' => $token,
         ], 201);
     }
@@ -63,7 +63,7 @@ class ExpController extends Controller
      */
     public function edit($id)
     {
-        $edit = Experience::find($id);
+        $edit = Portfolio::find($id);
 
         if (!$edit) {
             return response()->json([
@@ -84,8 +84,8 @@ class ExpController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $experience=Experience::find($id);
-        $experience->update($request->all());
+        $portfolio=Portfolio::find($id);
+        $portfolio->update($request->all());
         return response()->json([
             'message' => 'Update   successfully'
             // 'access_token' => $token,

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Portfolio;
 
 use App\Http\Controllers\Controller;
-use App\Models\Experience;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
-class ExpController extends Controller
+class SkillController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,10 +36,10 @@ class ExpController extends Controller
      */
     public function store(Request $request)
     {
-        $experience = Experience::create($request->all());
+        $skill = Skill::create($request->all());
         return response()->json([
-            'message' => 'Experience create  successfully',
-            'experience' => $experience,
+            'message' => 'skill create  successfully',
+            'skill' => $skill,
             // 'access_token' => $token,
         ], 201);
     }
@@ -63,7 +63,7 @@ class ExpController extends Controller
      */
     public function edit($id)
     {
-        $edit = Experience::find($id);
+        $edit = Skill::find($id);
 
         if (!$edit) {
             return response()->json([
@@ -84,8 +84,8 @@ class ExpController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $experience=Experience::find($id);
-        $experience->update($request->all());
+        $skill=Skill::find($id);
+        $skill->update($request->all());
         return response()->json([
             'message' => 'Update   successfully'
             // 'access_token' => $token,
