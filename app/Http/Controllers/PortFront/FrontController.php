@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\PortFront;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
+use App\Models\Education;
+use App\Models\Experience;
 use App\Models\Home;
+use App\Models\Portfolio;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -83,7 +88,7 @@ class FrontController extends Controller
     {
         //
     }
-    public function gethome(){
+    public function getHome(){
         $home=Home::latest()->first();
         if (!$home) {
             return response()->json([
@@ -94,4 +99,60 @@ class FrontController extends Controller
 
         return $home;
     }
+    public function getAbout(){
+        $about=About::latest()->first();
+        if (!$about) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, product not found.'
+            ], 400);
+        }
+
+        return $about;
+    }
+    public function getEducation(){
+        $education=Education::all();
+        if (!$education) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, product not found.'
+            ], 400);
+        }
+
+        return $education;
+    }
+    public function getExperience(){
+        $experiance=Experience::all();
+        if (!$experiance) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, product not found.'
+            ], 400);
+        }
+
+        return $experiance;
+    }
+    public function getSkill(){
+        $Skill=Skill::all();
+        if (!$Skill) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, product not found.'
+            ], 400);
+        }
+
+        return $Skill;
+    }
+    public function getPortfolio(){
+        $portfolio=Portfolio::all();
+        if (!$portfolio) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, product not found.'
+            ], 400);
+        }
+
+        return $portfolio;
+    }
+
 }

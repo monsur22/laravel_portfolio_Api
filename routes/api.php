@@ -41,6 +41,11 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 });
 //portfolio frontend api
 Route::get('gethome', [FrontController::class, 'getHome']);
+Route::get('getabout', [FrontController::class, 'getAbout']);
+Route::get('geteducation ', [FrontController::class, 'getEducation']);
+Route::get('getexperience', [FrontController::class, 'getExperience']);
+Route::get('getskill', [FrontController::class, 'getSkill']);
+Route::get('getportfolio', [FrontController::class, 'getPortfolio']);
 
 
 Route::get('/demo-url',  function  (Request $request)  {
