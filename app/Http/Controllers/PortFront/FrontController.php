@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\PortFront;
 
 use App\Http\Controllers\Controller;
+use App\Models\Home;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -81,5 +82,16 @@ class FrontController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function gethome(){
+        $home=Home::latest()->first();
+        if (!$home) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, product not found.'
+            ], 400);
+        }
+
+        return $home;
     }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\Portfolio\EduController;
 use App\Http\Controllers\Portfolio\ExpController;
 use App\Http\Controllers\Portfolio\PortfController;
 use App\Http\Controllers\Portfolio\SkillController;
+use App\Http\Controllers\PortFront\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,10 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::resource('portfolio/portf', PortfController::class);
 
 });
+//portfolio frontend api
+Route::get('gethome', [FrontController::class, 'getHome']);
+
+
 Route::get('/demo-url',  function  (Request $request)  {
     return response()->json(['Laravel 8 CORS Demo']);
  });
