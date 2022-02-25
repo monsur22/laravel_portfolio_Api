@@ -89,7 +89,8 @@ class FrontController extends Controller
         //
     }
     public function getHome(){
-        $home=Home::latest()->first();
+        // $home=Home::latest()->first();
+        $home=Home::all();
         if (!$home) {
             return response()->json([
                 'success' => false,
