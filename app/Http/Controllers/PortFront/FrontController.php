@@ -101,7 +101,8 @@ class FrontController extends Controller
         return $home;
     }
     public function getAbout(){
-        $about=About::latest()->first();
+        // $about=About::latest()->first();
+        $about=About::all();
         if (!$about) {
             return response()->json([
                 'success' => false,
