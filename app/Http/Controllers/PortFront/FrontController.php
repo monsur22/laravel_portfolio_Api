@@ -156,5 +156,16 @@ class FrontController extends Controller
 
         return $portfolio;
     }
+    public function getPortfolioById($id){
+        $portfolio=Portfolio::find($id);
+        if (!$portfolio) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, product not found.'
+            ], 400);
+        }
+
+        return $portfolio;
+    }
 
 }

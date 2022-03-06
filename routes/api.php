@@ -46,6 +46,7 @@ Route::get('geteducation ', [FrontController::class, 'getEducation']);
 Route::get('getexperience', [FrontController::class, 'getExperience']);
 Route::get('getskill', [FrontController::class, 'getSkill']);
 Route::get('getportfolio', [FrontController::class, 'getPortfolio']);
+Route::get('getportfolio/{id}', [FrontController::class, 'getPortfolioById']);
 
 
 Route::get('/demo-url',  function  (Request $request)  {
