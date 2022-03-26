@@ -11,6 +11,7 @@ class Education extends Model
     protected $fillable = [
         'degree',
         'year',
+        'school',
         's_desc',
     ];
 }

@@ -89,7 +89,7 @@ class HomeController extends Controller
         return response()->json([
             'message' => 'Update   successfully'
             // 'access_token' => $token,
-        ], 201);
+        ], 200);
     }
 
     /**
@@ -102,4 +102,15 @@ class HomeController extends Controller
     {
         //
     }
+
+    public function updatehome(Request $request, $id)
+    {
+        $home=Home::find($id);
+        $home->update($request->all());
+        return response()->json([
+            'message' => 'Update   successfully'
+            // 'access_token' => $token,
+        ], 200);
+    }
+
 }

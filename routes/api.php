@@ -37,7 +37,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::resource('portfolio/experience', ExpController::class);
     Route::resource('portfolio/skill', SkillController::class);
     Route::resource('portfolio/portf', PortfController::class);
-
+    Route::post('updatehome/{id}', [HomeController::class, 'updatehome']);
 });
 //portfolio frontend api
 Route::get('gethome', [FrontController::class, 'getHome']);
@@ -48,6 +48,8 @@ Route::get('getskill', [FrontController::class, 'getSkill']);
 Route::get('getportfolio', [FrontController::class, 'getPortfolio']);
 Route::get('getportfolio/{id}', [FrontController::class, 'getPortfolioById']);
 
+// Route::resource('portfolio/home', HomeController::class);
+// Route::post('updatehome/{id}', [HomeController::class, 'updatehome']);
 
 Route::get('/demo-url',  function  (Request $request)  {
     return response()->json(['Laravel 8 CORS Demo']);
