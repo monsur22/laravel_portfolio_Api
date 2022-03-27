@@ -10,7 +10,12 @@ class Portfolio extends Model
     use HasFactory;
     protected $fillable = [
         'tittle',
-        'image',
         's_desc',
+        'overview',
+        'technology',
+        'part_name',
+        'your_role',
+        'image',
+
     ];
 }
