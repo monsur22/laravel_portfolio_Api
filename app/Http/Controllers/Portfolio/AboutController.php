@@ -102,4 +102,14 @@ class AboutController extends Controller
     {
         //
     }
+
+    public function updateabout(Request $request, $id)
+    {
+        $home=About::find($id);
+        $home->update($request->all());
+        return response()->json([
+            'message' => 'Update  about successfully'
+            // 'access_token' => $token,
+        ], 200);
+    }
 }
