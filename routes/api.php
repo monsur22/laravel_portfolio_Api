@@ -39,6 +39,10 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::resource('portfolio/portf', PortfController::class);
     Route::post('updatehome/{id}', [HomeController::class, 'updatehome']);
     Route::post('updateabout/{id}', [AboutController::class, 'updateabout']);
+    Route::post('updateEducation/{id}', [EduController::class, 'update_education']);
+    Route::post('updateExperience/{id}', [ExpController::class, 'update_experience']);
+    Route::post('updatePortfolio/{id}', [PortfController::class, 'update_portfolio']);
+    Route::post('updateSkill/{id}', [SkillController::class, 'update_skill']);
 });
 //portfolio frontend api
 Route::get('gethome', [FrontController::class, 'getHome']);

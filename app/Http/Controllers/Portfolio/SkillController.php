@@ -100,6 +100,20 @@ class SkillController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $education=Skill::find($id);
+        $education->delete();
+        return response()->json([
+            'message' => 'Delete   successfully'
+            // 'access_token' => $token,
+        ], 200);
+    }
+    public function update_skill(Request $request, $id)
+    {
+        $education=Skill::find($id);
+        $education->update($request->all());
+        return response()->json([
+            'message' => 'Update   successfully'
+            // 'access_token' => $token,
+        ], 200);
     }
 }

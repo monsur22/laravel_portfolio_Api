@@ -100,6 +100,20 @@ class PortfController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $education=Portfolio::find($id);
+        $education->delete();
+        return response()->json([
+            'message' => 'Delete   successfully'
+            // 'access_token' => $token,
+        ], 200);
+    }
+    public function update_portfolio(Request $request, $id)
+    {
+        $education=Portfolio::find($id);
+        $education->update($request->all());
+        return response()->json([
+            'message' => 'Update   successfully'
+            // 'access_token' => $token,
+        ], 200);
     }
 }

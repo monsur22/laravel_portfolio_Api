@@ -89,7 +89,7 @@ class EduController extends Controller
         return response()->json([
             'message' => 'Update   successfully'
             // 'access_token' => $token,
-        ], 201);
+        ], 200);
     }
 
     /**
@@ -100,6 +100,21 @@ class EduController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $education=Education::find($id);
+        $education->delete();
+        return response()->json([
+            'message' => 'Delete   successfully'
+            // 'access_token' => $token,
+        ], 200);
+    }
+
+    public function update_education(Request $request, $id)
+    {
+        $education=Education::find($id);
+        $education->update($request->all());
+        return response()->json([
+            'message' => 'Update   successfully'
+            // 'access_token' => $token,
+        ], 200);
     }
 }
